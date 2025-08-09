@@ -1,0 +1,96 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "whatsapp-assisstance",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7a828a46-0284-4245-b74f-ff790bd2141a",
+      "name": "Webhook",
+      "webhookId": "8078214d-a760-4172-83e8-755f7abd65c1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $json.body || '';\nconst parts = text.trim().split(' ');\nconst command = parts[0].toLowerCase();\nconst args = parts.slice(1);\nreturn [{ json: { command, args } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2e46c28e-50d6-4daf-b196-dcac97fc7d3e",
+      "name": "Code"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "pallavi28.app.n8n.cloud",
+            "user-agent": "PostmanRuntime/7.45.0",
+            "content-length": "46",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "cache-control": "no-cache",
+            "cdn-loop": "cloudflare; loops=1; subreqs=1",
+            "cf-connecting-ip": "54.86.50.139",
+            "cf-ew-via": "15",
+            "cf-ipcountry": "US",
+            "cf-ray": "96c64f1243e2a568-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "cf-worker": "n8n.cloud",
+            "content-type": "application/json",
+            "postman-token": "366a8283-12a0-4e19-98f8-13590daef9f3",
+            "x-forwarded-for": "54.86.50.139, 104.23.209.217",
+            "x-forwarded-host": "pallavi28.app.n8n.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "traefik-prod-users-gwc-63-757945c69-8vdjl",
+            "x-is-trusted": "yes",
+            "x-real-ip": "54.86.50.139"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "message": "Hello from webhook test"
+          },
+          "webhookUrl": "https://pallavi28.app.n8n.cloud/webhook-test/whatsapp-assisstance",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "cc4a378d-07f1-4ee3-9bd3-0e5dc3e3ff46",
+  "meta": {
+    "instanceId": "fb536bff668df7424e6c5a4c92bf2b89a32dd03c46135a6d24c6ad3278ba6192"
+  },
+  "id": "FboOdAoZ4nfV9tRE",
+  "tags": []
+}
